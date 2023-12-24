@@ -85,43 +85,115 @@ public class Urun_2258 {
             System.out.print(b.StokMiktari + "\t");
             System.out.println();
         }
+    }
+//Urun -> UrunKategorikZamYap: Alt Urun sınıfına ait tüm birim fiyatları ürünün ad uzunluğu kadar (L) zam ekleyip güncelleyiniz.
+//UrunKategorikZamYap (String KategoriAdi)
 
+    public void UrunKategorikZamYap (String KategoriAdi){
+        double zamOrani;
+        if(KategoriAdi=="Beverages"){
+            for (Beverages_2258 b : beverages2258List) {
+                zamOrani = (b.getAdi().length()) / 100.0;
+                b.setBirimFiyati(b.getBirimFiyati() * (1 + zamOrani));
+            }
+        }
+       else if(KategoriAdi=="Cereals"){
+            for (Cereals_2258 b : cereals2258List) {
+                zamOrani = (b.getAdi().length()) / 100.0;
+                b.setBirimFiyati(b.getBirimFiyati() * (1 + zamOrani));
+            }
 
+        }
+       else if(KategoriAdi=="Condiments"){
+            for (Condiments_2258 b : condiments2258List) {
+                zamOrani = (b.getAdi().length()) / 100.0;
+                b.setBirimFiyati(b.getBirimFiyati() * (1 + zamOrani));
+            }
+
+        }
+       else if(KategoriAdi=="Confections"){
+            for (Confections_2258 b : confections2258List) {
+                zamOrani = (b.getAdi().length()) / 100.0;
+                b.setBirimFiyati(b.getBirimFiyati() * (1 + zamOrani));
+            }
+
+        }
+        else if(KategoriAdi=="DairyProducts"){
+            for (DairyProducts_2258 b : dairyProducts2258List) {
+                zamOrani = (b.getAdi().length()) / 100.0;
+                b.setBirimFiyati(b.getBirimFiyati() * (1 + zamOrani));
+            }
+        }
+    }
+    public void UrunKategorikZamYap (String KategoriAdi,int stokKontrol){
+        double zamOrani;
+        switch (KategoriAdi) {
+            case "Beverages":
+                for (Beverages_2258 b : beverages2258List) {
+                    if(stokKontrol>10){
+                        zamOrani = b.getAdi().length() / 100.0;
+                        b.setBirimFiyati(b.getBirimFiyati() * (1 + zamOrani));
+                    }
+                    else{
+                        zamOrani = b.getAdi().length() / 100.0;
+                        b.setBirimFiyati(b.getBirimFiyati() * (1 + (zamOrani*2)));
+                    }
+                }
+                break;
+            case "Cereals":
+                for (Cereals_2258 b : cereals2258List) {
+                    if(stokKontrol>10){
+                        zamOrani = b.getAdi().length() / 100.0;
+                        b.setBirimFiyati(b.getBirimFiyati() * (1 + zamOrani));
+                    }
+                    else{
+                        zamOrani = b.getAdi().length() / 100.0;
+                        b.setBirimFiyati(b.getBirimFiyati() * (1 + (zamOrani*2)));
+                    }
+                }
+                break;
+            case "Condiments":
+                for (Condiments_2258 b : condiments2258List) {
+                    if(stokKontrol>10){
+                        zamOrani = b.getAdi().length() / 100.0;
+                        b.setBirimFiyati(b.getBirimFiyati() * (1 + zamOrani));
+                    }
+                    else{
+                        zamOrani = b.getAdi().length() / 100.0;
+                        b.setBirimFiyati(b.getBirimFiyati() * (1 + (zamOrani*2)));
+                    }
+                }
+                break;
+            case "Confections":
+                for (Confections_2258 b : confections2258List) {
+                    if(stokKontrol>10){
+                        zamOrani = b.getAdi().length() / 100.0;
+                        b.setBirimFiyati(b.getBirimFiyati() * (1 + zamOrani));
+                    }
+                    else{
+                        zamOrani = b.getAdi().length() / 100.0;
+                        b.setBirimFiyati(b.getBirimFiyati() * (1 + (zamOrani*2)));
+                    }
+                }
+                break;
+            case "DairyProducts":
+                for (DairyProducts_2258 b : dairyProducts2258List) {
+                    if(stokKontrol>10){
+                        zamOrani = b.getAdi().length() / 100.0;
+                        b.setBirimFiyati(b.getBirimFiyati() * (1 + zamOrani));
+                    }
+                    else{
+                        zamOrani = b.getAdi().length() / 100.0;
+                        b.setBirimFiyati(b.getBirimFiyati() * (1 + (zamOrani*2)));
+                    }
+                }
+                break;
+            default:
+                // Handle the case where KategoriAdi doesn't match any of the known categories
+                break;
+        }
 
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     public static List<Beverages_2258> getBeveragesList() {
         return beverages2258List;

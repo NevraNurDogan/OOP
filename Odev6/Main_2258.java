@@ -54,6 +54,11 @@ public class Main_2258 {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        allProducts.addAll(beverages2258List);
+        allProducts.addAll(cereals2258List);
+        allProducts.addAll(condiments2258List);
+        allProducts.addAll(confections2258List);
+        allProducts.addAll(dairyProducts2258List);
         while (true) {
             System.out.println("1: UrunFiyatGuncelle");
             System.out.println("2: UrunKategorikZamYap");
@@ -70,34 +75,15 @@ public class Main_2258 {
 
             switch (secim) {
                 case 1:
-                    System.out.println("Miktar giriniz:");
-                    int miktar= scanner.nextInt();
-                    System.out.println("Güncel fiyat giriniz:");
-                    int fiyat= scanner.nextInt();
-                 //   Urun_2258.StokMiktarinaGoreUrunFiyatlariGuncelle(beverages2258List,miktar,fiyat);
-                    for (Beverages_2258 b : beverages2258List) {
-                        System.out.print( b.adi+"\t");
-                        System.out.print( b.KategoriIndex+"\t");
-                        System.out.print(b.BirimAgirligi+"\t");
-                        System.out.print(b.BirimFiyati+"\t");
-                        System.out.print(b.StokMiktari+"\t");
-                        System.out.println();
-                    }
+                    Urun_2258.UrunFiyatGuncelle(100,allProducts);
                     break;
                 case 2:
-                    allProducts.addAll(beverages2258List);
-                    allProducts.addAll(cereals2258List);
-                    allProducts.addAll(condiments2258List);
-                    allProducts.addAll(confections2258List);
-                    allProducts.addAll(dairyProducts2258List);
                     System.out.println("Yapılacak zam miktarını giriniz:");
                     int zam= scanner.nextInt();
                     Urun_2258.UrunFiyatGuncelle(zam,allProducts);
                     break;
                 case 3:
-                    System.out.println("Miktar giriniz:");
-                    int x= scanner.nextInt();
-                    Beverages_2258.IcecekStoklariniGuncelle(x);
+                    Beverages_2258.UrunFiyatGuncelle(50);
                     for (Beverages_2258 b : beverages2258List) {
                         System.out.print(b.adi + "\t");
                         System.out.print(b.KategoriIndex + "\t");
@@ -112,7 +98,7 @@ public class Main_2258 {
                     int N= scanner.nextInt();
                     System.out.println("Yeni ağırlık giriniz:");
                     String agirlik= scanner.next();
-                    Condiments_2258.CesniBirimAgirlikGuncelle(condiments2258List,N,agirlik);
+                  //  Condiments_2258.CesniBirimAgirlikGuncelle(condiments2258List,N,agirlik);
                     for (Condiments_2258 b : condiments2258List) {
                         System.out.print( b.adi+"\t");
                         System.out.print( b.KategoriIndex+"\t");
@@ -129,10 +115,10 @@ public class Main_2258 {
                     int min= scanner.nextInt();
                     System.out.println("max degerini giriniz:");
                     int max= scanner.nextInt();
-                    DairyProducts_2258.SutUrunleriniSil(min,max, dairyProducts2258List);
+                  //  DairyProducts_2258.SutUrunleriniSil(min,max, dairyProducts2258List);
                     break;
                 case 7:
-                    Cereals_2258.TahilUrunEkle("ekmek","200gr",9.0,35, cereals2258List);
+                   // Cereals_2258.TahilUrunEkle("ekmek","200gr",9.0,35, cereals2258List);
                     break;
                 case 8:
                     System.out.println("Çıkış yapılıyor...");

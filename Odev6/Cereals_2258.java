@@ -1,5 +1,7 @@
+import java.util.ArrayList;
 import java.util.List;
 public class Cereals_2258 extends Urun_2258 {
+    public static List<Cereals_2258> cereals2258List = new ArrayList<>();
     public Cereals_2258(String adi, int kategoriIndex, String birimAgirligi, double birimFiyati, int stokMiktari) {
         super(adi, kategoriIndex,birimAgirligi, birimFiyati, stokMiktari);
     }
