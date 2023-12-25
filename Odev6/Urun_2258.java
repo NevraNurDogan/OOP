@@ -2,12 +2,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Urun_2258 {
-    static java.util.List<Beverages_2258> beverages2258List = new ArrayList<>();
-    static java.util.List<Cereals_2258> cereals2258List = new ArrayList<>();
-    static java.util.List<Condiments_2258> condiments2258List = new ArrayList<>();
-    static java.util.List<Confections_2258> confections2258List = new ArrayList<>();
+    static List<Beverages_2258> beverages2258List = new ArrayList<>();
+    static List<Cereals_2258> cereals2258List = new ArrayList<>();
+    static List<Condiments_2258> condiments2258List = new ArrayList<>();
+    static List<Confections_2258> confections2258List = new ArrayList<>();
     static List<DairyProducts_2258> dairyProducts2258List = new ArrayList<>();
-    static java.util.List<Urun_2258> allProducts = new ArrayList<>();
+    static List<Urun_2258> allProducts = new ArrayList<>();
     String adi;
     int KategoriIndex;
     String BirimAgirligi;
@@ -21,7 +21,7 @@ public class Urun_2258 {
         this.BirimFiyati = birimFiyati;
         this.StokMiktari = stokMiktari;
     }
-    static void UrunFiyatGuncelle(int oran, List<Urun_2258> allProducts) {
+    public  static void UrunFiyatGuncelle(int oran) {
         if (allProducts.isEmpty()) {
             System.out.println("Ürün bulunamadı.");
             return;
@@ -40,7 +40,7 @@ public class Urun_2258 {
             System.out.println();
         }
     }
-    public static void UrunFiyatGuncelle(int oran, int stokMiktari, List<Urun_2258> allProducts){
+    public static void UrunFiyatGuncelle(int oran, int stokMiktari){
         if (allProducts.isEmpty()) {
             System.out.println("Ürün bulunamadı.");
             return;
@@ -61,12 +61,11 @@ public class Urun_2258 {
             System.out.println();
         }
     }
-    public void UrunStokGuncelle(int stokMiktari, boolean GirisMi,List<Urun_2258> allProducts){
+    public static void UrunStokGuncelle(int stokMiktari, boolean GirisMi){
         if (allProducts.isEmpty()) {
             System.out.println("Ürün bulunamadı.");
             return;
         }
-
         for (Urun_2258 urun : allProducts) {
             int mevcutStok=urun.getStokMiktari();
             if(GirisMi){
@@ -86,51 +85,12 @@ public class Urun_2258 {
             System.out.println();
         }
     }
-//Urun -> UrunKategorikZamYap: Alt Urun sınıfına ait tüm birim fiyatları ürünün ad uzunluğu kadar (L) zam ekleyip güncelleyiniz.
-//UrunKategorikZamYap (String KategoriAdi)
-
-    public void UrunKategorikZamYap (String KategoriAdi){
-        double zamOrani;
-        if(KategoriAdi=="Beverages"){
-            for (Beverages_2258 b : beverages2258List) {
-                zamOrani = (b.getAdi().length()) / 100.0;
-                b.setBirimFiyati(b.getBirimFiyati() * (1 + zamOrani));
-            }
-        }
-       else if(KategoriAdi=="Cereals"){
-            for (Cereals_2258 b : cereals2258List) {
-                zamOrani = (b.getAdi().length()) / 100.0;
-                b.setBirimFiyati(b.getBirimFiyati() * (1 + zamOrani));
-            }
-
-        }
-       else if(KategoriAdi=="Condiments"){
-            for (Condiments_2258 b : condiments2258List) {
-                zamOrani = (b.getAdi().length()) / 100.0;
-                b.setBirimFiyati(b.getBirimFiyati() * (1 + zamOrani));
-            }
-
-        }
-       else if(KategoriAdi=="Confections"){
-            for (Confections_2258 b : confections2258List) {
-                zamOrani = (b.getAdi().length()) / 100.0;
-                b.setBirimFiyati(b.getBirimFiyati() * (1 + zamOrani));
-            }
-
-        }
-        else if(KategoriAdi=="DairyProducts"){
-            for (DairyProducts_2258 b : dairyProducts2258List) {
-                zamOrani = (b.getAdi().length()) / 100.0;
-                b.setBirimFiyati(b.getBirimFiyati() * (1 + zamOrani));
-            }
-        }
-    }
-    public void UrunKategorikZamYap (String KategoriAdi,int stokKontrol){
+    public static void UrunKategorikZamYap (String KategoriAdi){
         double zamOrani;
         switch (KategoriAdi) {
             case "Beverages":
                 for (Beverages_2258 b : beverages2258List) {
-                    if(stokKontrol>10){
+                    if(b.StokMiktari>10){
                         zamOrani = b.getAdi().length() / 100.0;
                         b.setBirimFiyati(b.getBirimFiyati() * (1 + zamOrani));
                     }
@@ -142,7 +102,7 @@ public class Urun_2258 {
                 break;
             case "Cereals":
                 for (Cereals_2258 b : cereals2258List) {
-                    if(stokKontrol>10){
+                    if(b.StokMiktari>10){
                         zamOrani = b.getAdi().length() / 100.0;
                         b.setBirimFiyati(b.getBirimFiyati() * (1 + zamOrani));
                     }
@@ -154,7 +114,7 @@ public class Urun_2258 {
                 break;
             case "Condiments":
                 for (Condiments_2258 b : condiments2258List) {
-                    if(stokKontrol>10){
+                    if(b.StokMiktari>10){
                         zamOrani = b.getAdi().length() / 100.0;
                         b.setBirimFiyati(b.getBirimFiyati() * (1 + zamOrani));
                     }
@@ -166,7 +126,7 @@ public class Urun_2258 {
                 break;
             case "Confections":
                 for (Confections_2258 b : confections2258List) {
-                    if(stokKontrol>10){
+                    if(b.StokMiktari>10){
                         zamOrani = b.getAdi().length() / 100.0;
                         b.setBirimFiyati(b.getBirimFiyati() * (1 + zamOrani));
                     }
@@ -178,7 +138,7 @@ public class Urun_2258 {
                 break;
             case "DairyProducts":
                 for (DairyProducts_2258 b : dairyProducts2258List) {
-                    if(stokKontrol>10){
+                    if(b.StokMiktari>10){
                         zamOrani = b.getAdi().length() / 100.0;
                         b.setBirimFiyati(b.getBirimFiyati() * (1 + zamOrani));
                     }
@@ -189,10 +149,17 @@ public class Urun_2258 {
                 }
                 break;
             default:
-                // Handle the case where KategoriAdi doesn't match any of the known categories
+
                 break;
         }
-
+        for (Urun_2258 b : allProducts) {
+            System.out.print(b.adi + "\t");
+            System.out.print(b.KategoriIndex + "\t");
+            System.out.print(b.BirimAgirligi + "\t");
+            System.out.print(b.BirimFiyati + "\t");
+            System.out.print(b.StokMiktari + "\t");
+            System.out.println();
+        }
     }
 
     public static List<Beverages_2258> getBeveragesList() {

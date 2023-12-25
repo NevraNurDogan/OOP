@@ -1,28 +1,30 @@
-import java.util.ArrayList;
-import java.util.List;
-
 public class Confections_2258 extends Urun_2258 {
     private String detay;
-    public static List<Confections_2258> confections2258List = new ArrayList<>();
-
     public Confections_2258(String adi, int kategoriIndex, String birimAgirligi, double birimFiyati, int stokMiktari, String detay) {
         super(adi, kategoriIndex, birimAgirligi, birimFiyati, stokMiktari);
         this.detay = detay;
     }
     public Confections_2258(String adi, int kategoriIndex, String birimAgirligi, double birimFiyati, int stokMiktari) {
         super(adi, kategoriIndex, birimAgirligi, birimFiyati, stokMiktari);
-
     }
-    public void sekerlemeDetayEkle(String adi, String yeniDetay) {
-        if (this.adi.equals(adi)) {
-            this.detay += yeniDetay;
-            System.out.println("Detay başarıyla eklendi: " + yeniDetay);
-        } else {
-            System.out.println("Ürün bulunamadı.");
+    public static void UrunStokGuncelle(int stokMiktari, boolean GirisMi) {
+        if (confections2258List.isEmpty()) {
+            System.out.println("Confections kategorisinde güncellenecek ürün bulunamadı.");
+            return;
         }
-    }
-    public void UrunStokGuncelle(int stokMiktarı, boolean GirisMi){
-
+        for (Confections_2258 urun : confections2258List) {
+            if ((urun.getStokMiktari() > 10 && !GirisMi) || (urun.getStokMiktari() < 20 && GirisMi)) {
+                if (GirisMi) {
+                    urun.setStokMiktari(urun.getStokMiktari() + stokMiktari);
+                    System.out.println(urun.getAdi() + " adlı ürüne " + stokMiktari + " adet stok girişi yapıldı.");
+                } else {
+                    urun.setStokMiktari(urun.getStokMiktari() - stokMiktari);
+                    System.out.println(urun.getAdi() + " adlı üründen " + stokMiktari + " adet stok çıkışı yapıldı.");
+                }
+            } else {
+                System.out.println(urun.getAdi() + " adlı ürün için belirtilen koşullar sağlanmadığından işlem yapılmadı.");
+            }
+        }
     }
 
     public String getDetay() {

@@ -1,12 +1,8 @@
-import java.util.ArrayList;
-import java.util.List;
-
 public class Condiments_2258 extends Urun_2258 {
-    public static List<Condiments_2258> condiments2258List = new ArrayList<>();
     public Condiments_2258(String adi, int kategoriIndex, String birimAgirligi, double birimFiyati, int stokMiktari) {
         super(adi, kategoriIndex,birimAgirligi, birimFiyati, stokMiktari);
     }
-        public void CesniBirimAgirlikGuncelle(String yeniAgirlik) {
+        public static void CesniBirimAgirlikGuncelle(String yeniAgirlik) {
             Condiments_2258 enCokStoktaOlanCesni = null;
             int maxStok = Integer.MIN_VALUE;
             for (Condiments_2258 cesni : condiments2258List) {
@@ -15,12 +11,13 @@ public class Condiments_2258 extends Urun_2258 {
                     enCokStoktaOlanCesni = cesni;
                 }
             }
+            System.out.println("En çok stoğu olan ürün:"+enCokStoktaOlanCesni.getAdi());
             if (enCokStoktaOlanCesni != null) {
                 enCokStoktaOlanCesni.setBirimAgirligi(yeniAgirlik);
+                System.out.println("En çok stoğu olan ürün ağırlığı güncellendi:"+enCokStoktaOlanCesni.getAdi()+"->"+yeniAgirlik);
             }
         }
-
-        public void CesniBirimAgirlikGuncelle(String yeniAgirlik, int stokMiktarı) {
+        public  static void CesniBirimAgirlikGuncelle(String yeniAgirlik, int stokMiktarı) {
             Condiments_2258 enYakinStokluCesni = null;
             int enKucukFark = Integer.MAX_VALUE;
 
@@ -32,8 +29,10 @@ public class Condiments_2258 extends Urun_2258 {
                     enYakinStokluCesni = cesni;
                 }
             }
+            System.out.println("Stoğa en yakın olan ürün:"+enYakinStokluCesni.getAdi());
             if (enYakinStokluCesni != null) {
                 enYakinStokluCesni.setBirimAgirligi(yeniAgirlik);
+                System.out.println("Stoğa en yakın olan ürünün ağırlığı güncellendi:"+enYakinStokluCesni.getAdi()+"->"+yeniAgirlik);
             }
         }
     }

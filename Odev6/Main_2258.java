@@ -1,24 +1,15 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class Main_2258 {
     public static void main(String[] args) {
-        String dosyaAdi = "C:\\Users\\Casper\\OneDrive\\Masaüstü\\Belgeler\\Yazılım Mühendisliği 2. Sınıf\\OOP\\6.Hafta\\Urunler.txt";
-        List<Beverages_2258> beverages2258List = new ArrayList<>();
-        List<Cereals_2258> cereals2258List = new ArrayList<>();
-        List<Condiments_2258> condiments2258List = new ArrayList<>();
-        List<Confections_2258> confections2258List = new ArrayList<>();
-        List<DairyProducts_2258> dairyProducts2258List = new ArrayList<>();
-        List<Urun_2258> allProducts = new ArrayList<>();
 
+        String dosyaAdi = "C:\\Users\\Casper\\OneDrive\\Masaüstü\\Belgeler\\Yazılım Mühendisliği 2. Sınıf\\OOP\\6.Hafta\\Urunler.txt";
         try {
             BufferedReader bufferedReader = new BufferedReader(new FileReader(dosyaAdi));
             String satir;
-
             while ((satir = bufferedReader.readLine()) != null) {
                 String[] veri = satir.split("\t");
                 if (veri.length == 5) {
@@ -29,23 +20,23 @@ public class Main_2258 {
                     int stokMiktari = Integer.parseInt(veri[4]);
                     if(kategoriIndex==1){
                         Urun_2258 beverages= new Beverages_2258(ad, kategoriIndex, birimAgirligi, birimFiyat, stokMiktari);
-                        beverages2258List.add((Beverages_2258) beverages);
+                        Urun_2258.beverages2258List.add((Beverages_2258) beverages);
                     }
                     if(kategoriIndex==2){
                         Urun_2258 condiments= new Condiments_2258(ad, kategoriIndex, birimAgirligi, birimFiyat, stokMiktari);
-                        condiments2258List.add((Condiments_2258)condiments);
+                        Urun_2258.condiments2258List.add((Condiments_2258)condiments);
                     }
                     if(kategoriIndex==3){
                         Urun_2258 confections= new Confections_2258(ad, kategoriIndex, birimAgirligi, birimFiyat, stokMiktari);
-                        confections2258List.add((Confections_2258) confections);
+                        Urun_2258.confections2258List.add((Confections_2258) confections);
                     }
                     if(kategoriIndex==4){
                         Urun_2258 dairyProducts= new DairyProducts_2258(ad, kategoriIndex, birimAgirligi, birimFiyat, stokMiktari);
-                        dairyProducts2258List.add((DairyProducts_2258) dairyProducts);
+                        Urun_2258.dairyProducts2258List.add((DairyProducts_2258) dairyProducts);
                     }
                     if(kategoriIndex==5){
                         Urun_2258 cereals= new Cereals_2258(ad, kategoriIndex, birimAgirligi, birimFiyat, stokMiktari);
-                        cereals2258List.add((Cereals_2258)cereals);
+                        Urun_2258.cereals2258List.add((Cereals_2258)cereals);
                     }
 
                 }
@@ -54,11 +45,11 @@ public class Main_2258 {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        allProducts.addAll(beverages2258List);
-        allProducts.addAll(cereals2258List);
-        allProducts.addAll(condiments2258List);
-        allProducts.addAll(confections2258List);
-        allProducts.addAll(dairyProducts2258List);
+        Urun_2258.allProducts.addAll(Urun_2258.beverages2258List);
+        Urun_2258.allProducts.addAll(Urun_2258.cereals2258List);
+        Urun_2258.allProducts.addAll(Urun_2258.condiments2258List);
+        Urun_2258.allProducts.addAll(Urun_2258.confections2258List);
+        Urun_2258.allProducts.addAll(Urun_2258.dairyProducts2258List);
         while (true) {
             System.out.println("1: UrunFiyatGuncelle");
             System.out.println("2: UrunKategorikZamYap");
@@ -75,50 +66,31 @@ public class Main_2258 {
 
             switch (secim) {
                 case 1:
-                    Urun_2258.UrunFiyatGuncelle(100,allProducts);
+                    Urun_2258.UrunFiyatGuncelle(100);
+                    Urun_2258.UrunFiyatGuncelle(50,25);
                     break;
                 case 2:
-                    System.out.println("Yapılacak zam miktarını giriniz:");
-                    int zam= scanner.nextInt();
-                    Urun_2258.UrunFiyatGuncelle(zam,allProducts);
+                    Urun_2258.UrunKategorikZamYap("Beverages");
                     break;
                 case 3:
                     Beverages_2258.UrunFiyatGuncelle(50);
-                    for (Beverages_2258 b : beverages2258List) {
-                        System.out.print(b.adi + "\t");
-                        System.out.print(b.KategoriIndex + "\t");
-                        System.out.print(b.BirimAgirligi + "\t");
-                        System.out.print(b.BirimFiyati + "\t");
-                        System.out.print(b.StokMiktari + "\t");
-                        System.out.println();
-                    }
+
                     break;
                 case 4:
-                    System.out.println("N degerini giriniz:");
-                    int N= scanner.nextInt();
-                    System.out.println("Yeni ağırlık giriniz:");
-                    String agirlik= scanner.next();
-                  //  Condiments_2258.CesniBirimAgirlikGuncelle(condiments2258List,N,agirlik);
-                    for (Condiments_2258 b : condiments2258List) {
-                        System.out.print( b.adi+"\t");
-                        System.out.print( b.KategoriIndex+"\t");
-                        System.out.print(b.BirimAgirligi+"\t");
-                        System.out.print(b.BirimFiyati+"\t");
-                        System.out.print(b.StokMiktari+"\t");
-                        System.out.println();
-                    }
+                    Condiments_2258.CesniBirimAgirlikGuncelle("15",10);
+                    Condiments_2258.CesniBirimAgirlikGuncelle("20");
+
                     break;
                 case 5:
+                    Confections_2258.UrunStokGuncelle(10,true);
                     break;
                 case 6:
-                    System.out.println("min degerini giriniz:");
-                    int min= scanner.nextInt();
-                    System.out.println("max degerini giriniz:");
-                    int max= scanner.nextInt();
-                  //  DairyProducts_2258.SutUrunleriniSil(min,max, dairyProducts2258List);
+               DairyProducts_2258.SutUrunuSil(25.2);
+               DairyProducts_2258.SutUrunuSil();
+               DairyProducts_2258.SutUrunuSil(10,30,45.1);
                     break;
                 case 7:
-                   // Cereals_2258.TahilUrunEkle("ekmek","200gr",9.0,35, cereals2258List);
+                   Cereals_2258.TahilUrunEkle("ekmek","200gr",9.0,"detay");
                     break;
                 case 8:
                     System.out.println("Çıkış yapılıyor...");
